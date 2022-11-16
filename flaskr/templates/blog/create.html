@@ -1,24 +1,28 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %} Nova Tarefa{% endblock %}</h1>
+    <h1>
+        {% block title %} 
+            Nova Tarefa
+        {% endblock %}
+    </h1>
 
 {% endblock %}
 
 {% block content %}
     <form method="post">
-        <label for="title">Titulo</label>
+        <label for="title">Titulo:</label>
             <input name="title" id="title" value="{{ request.form['title'] }}" required>
 
-        <label for="priority">Prioridade</label>
+        <label for="priority">Prioridade:</label>
             <input name="priority" id="priority" value="{{ request.form['priority'] }}" required>
 
-        <label for="dateend">Data Final</label>
+        <label for="dateend">Data Final:</label>
             <input type="date" name="dateend" id="dateend" value="{{ request.form['dateend'] }}" required>
 
-        <label for="body">Descricao</label>
+        <label for="body">Descricao:</label>
             <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
 
-        <input type="submit" value="Save">
+        <input type="submit" value="Salvar">
     </form>
 {% endblock %}

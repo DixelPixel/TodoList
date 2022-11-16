@@ -13,21 +13,31 @@
             <header>
                 <div>
                     <h1>{{ post['title'] }}</h1>
-                        
                 </div>
 
                 {% if g.user['id'] == post['author_id'] %}
-                    <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Editar</a>
+                    <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">
+                        Editar
+                    </a>
                 {% endif %}
             </header> 
             <p>            
-                <b>Data Inicio:</b> {{ post['created'].strftime('%Y-%m-%d') }}
+                <b>
+                    Data Inicio:
+                </b> {{ post['created'].strftime('%Y-%m-%d') }}
             </p>
             <p>
-                <b>Data Final:</b> {{ post['dateend'].strftime('%Y-%m-%d') }}        
+                <h3>
+                    <b>
+                        Data Final:
+                    </b>
+                </h3> {{ post['dateend'].strftime('%Y-%m-%d') }}        
             </p>
+
             <p class="priority">{{ post['priority'] }}</p>
+
             <p class="body">{{ post['body'] }}</p>
+
         </article>
         {% if not loop.last %}
             <hr>

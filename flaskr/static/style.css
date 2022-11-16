@@ -7,9 +7,9 @@ html {
 body {
   max-width: 960px;
   margin: 0 auto;
-  background: white;
+  background: #D9DDE0;
 }
-
+/*REMOVAR ESSA PARTE H1 H2 H3 RELACIONADO A CORES*/
 h1, h2, h3, h4, h5, h6 {
   font-family: serif;
   color: #377ba8;
@@ -22,7 +22,7 @@ a {
 
 hr {
   border: none;
-  border-top: 1px solid lightgray;
+  border-top: 3px solid #1468AF;
 }
 
 nav {
@@ -59,7 +59,7 @@ nav ul li a, nav ul li span, header .action {
 }
 
 .content > header {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 2px solid lightgray;
   display: flex;
   align-items: flex-end;
 }
@@ -116,10 +116,14 @@ nav ul li a, nav ul li span, header .action {
 }
 
 .content input, .content textarea {
+  border: 2px solid #377ba8;
   margin-bottom: 1em;
+  
 }
 
 .content textarea {
+  border: 2px solid #377ba8;
+  padding: .5em;
   min-height: 12em;
   resize: vertical;
 }
