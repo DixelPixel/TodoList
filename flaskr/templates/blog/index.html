@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Posts{% endblock %}</h1>
+    <h1>{% block title %}Tarefas{% endblock %}</h1>
     {% if g.user %}
-        <a class="action" href="{{ url_for('blog.create') }}">New</a>
+        <a class="action" href="{{ url_for('blog.create') }}">Nova Tarefa</a>
     {% endif %}
 {% endblock %}
 
@@ -13,14 +13,21 @@
             <header>
                 <div>
                     <h1>{{ post['title'] }}</h1>
-                    <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
+                        
                 </div>
+
                 {% if g.user['id'] == post['author_id'] %}
-                    <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+                    <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Editar</a>
                 {% endif %}
-            </header>
-        <p class="priority">{{ post['priority'] }}</p>
-        <p class="body">{{ post['body'] }}</p>
+            </header> 
+            <p>            
+                <b>Data Inicio:</b> {{ post['created'].strftime('%Y-%m-%d') }}
+            </p>
+            <p>
+                <b>Data Final:</b> {{ post['dateend'].strftime('%Y-%m-%d') }}        
+            </p>
+            <p class="priority">{{ post['priority'] }}</p>
+            <p class="body">{{ post['body'] }}</p>
         </article>
         {% if not loop.last %}
             <hr>

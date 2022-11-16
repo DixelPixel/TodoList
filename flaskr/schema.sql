@@ -12,6 +12,7 @@ CREATE TABLE post (
   author_id INTEGER NOT NULL,
   priority INTEGER NOT NULL,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  dateend DATE NULL,
   title TEXT NOT NULL,
   body TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)

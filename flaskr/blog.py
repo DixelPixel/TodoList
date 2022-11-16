@@ -5,6 +5,10 @@ from werkzeug.exceptions import abort
 
 from flaskr.auth import login_required
 from flaskr.db import get_db
+from datetime import datetime
+import time
+import datetime
+from datetime import date,timedelta
 
 bp = Blueprint('blog', __name__)
 
@@ -13,7 +17,7 @@ bp = Blueprint('blog', __name__)
 def index():
     db = get_db()
     posts = db.execute(
-        'SELECT p.id, title, body, created,priority, author_id,username'
+        'SELECT p.id, title, body, created,  priority, dateend, author_id,username'
         ' FROM post p JOIN user u ON p.author_id =u.id'
         ' ORDER BY priority ASC'
     ).fetchall()
@@ -26,6 +30,7 @@ def create():
         title = request.form['title']
         body = request.form['body']
         priority = request.form['priority']
+        dateend = request.form['dateend']
         error = None
 
         if not title:
@@ -36,9 +41,9 @@ def create():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (title,body,author_id, priority)'
-                ' VALUES (?,?,?,?)',
-                (title, body, g.user['id'], priority)
+                'INSERT INTO post (title, body, author_id, priority, dateend)'
+                ' VALUES (?,?,?,?,?)',
+                (title, body, g.user['id'], priority, dateend)
             )
             db.commit()
             return redirect(url_for('blog.index'))
@@ -47,7 +52,7 @@ def create():
 
 def get_post(id, check_author=True):
     post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id,priority, username '
+        'SELECT p.id, title, body, created, dateend, author_id,priority, username '
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' WHERE p.id = ?',
         (id,)
@@ -70,6 +75,7 @@ def update(id):
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
+        dateend = request.form['dateend']
         error = None
 
         if not title:
@@ -80,9 +86,9 @@ def update(id):
         else:
             db = get_db()
             db.execute(
-                'UPDATE post SET title = ?, body = ?'
+                'UPDATE post SET title = ?, body = ?, dateend = ?'
                 ' WHERE id = ?',
-                (title, body, id)
+                (title, body,dateend, id)
             )
             db.commit()
             return redirect(url_for('blog.index'))
