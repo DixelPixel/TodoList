@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Editar "{{ post[title] }}"{% endblock %}</h1>
+    <h1>{% block title %}
+        Editar{{ post[title] }}{% endblock %}
+    </h1>
 {% endblock %}
 
 {% block content %}
@@ -13,6 +15,10 @@
         <label for="dateend">Data Final</label>
             <input type="date" name="dateend" id title
                 value="{{ request.form['dateend'] or post['dateend'] }}" required>
+
+        <label for="priority">Prioridade</label>
+            <input type = "number" min = "0" name="priority" id="priority" option value="{{ request.form['priority'] or post['priority']}}" 
+                value="{{ request.form['priority'] or post['priority'] }}" required>
 
         <label for="body">Descricao</label>
             <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>

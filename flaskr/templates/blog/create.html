@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
+
     <h1>
         {% block title %} 
             Nova Tarefa
@@ -11,13 +12,13 @@
 
 {% block content %}
     <form method="post">
-        <label for="title">Titulo:</label>
+        <label for="title">Titulo</label>
             <input name="title" id="title" value="{{ request.form['title'] }}" required>
 
-        <label for="priority">Prioridade:</label>
-            <input name="priority" id="priority" value="{{ request.form['priority'] }}" required>
+        <label for="priority">Prioridade</label>
+            <input type = "number" min = "0" name="priority" id="priority" option value="{{ request.form['priority'] }}" required>
 
-        <label for="dateend">Data Final:</label>
+        <label for="dateend">Data Final</label>
             <input type="date" name="dateend" id="dateend" value="{{ request.form['dateend'] }}" required>
 
         <label for="body">Descricao:</label>

@@ -1,15 +1,22 @@
 <!doctype html>
-<title>To Do List</title>
+<title>
+    To Do List
+</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-    <h1>
-        <a href ="/">
-            To Do List
-        </a>
-    </h1>
-    <ul>
+
+<nav>    
+        <h1>
+            <a href ="/">
+                To Do List
+            </a>
+        </h1>
+        <ul>
         {% if g.user %}
-            <li><span>{{ g.user['username'] }}</span></li>
+            <li>
+                <span>
+                    {{ g.user['username'] }}
+                </span>
+            </li>
             <li>
                 <a href="{{ url_for('auth.logout') }}">
                     Logout
@@ -28,8 +35,10 @@
             </a>
         </li>    
         {% endif %}
+
     </ul>
 </nav>
+
 <section class="content">
     <header>
         {% block header %}{% endblock %}

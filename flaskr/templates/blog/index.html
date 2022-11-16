@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Tarefas{% endblock %}</h1>
-    {% if g.user %}
-        <a class="action" href="{{ url_for('blog.create') }}">Nova Tarefa</a>
-    {% endif %}
+    <div class = "cabeca">
+        <h1>
+            {% block title %}
+                Tarefas
+            {% endblock %}
+        </h1>
+        
+        {% if g.user %}
+            <a class="action" href="{{ url_for('blog.create') }}">
+                Nova Tarefa
+            </a>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -12,29 +21,48 @@
         <article class="post">
             <header>
                 <div>
-                    <h1>{{ post['title'] }}</h1>
+                    <h1>{{ post['title']}}</h1>
                 </div>
-
+                    
                 {% if g.user['id'] == post['author_id'] %}
                     <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">
                         Editar
                     </a>
                 {% endif %}
             </header> 
-            <p>            
-                <b>
-                    Data Inicio:
-                </b> {{ post['created'].strftime('%Y-%m-%d') }}
+            <p>     
+                <h3>       
+                    <b>
+                        <u>
+                            Data Inicio:
+                        </u>                    
+                    </b> 
+                </h3>
+                {{ post['created'].strftime('%Y-%m-%d') }}
             </p>
             <p>
                 <h3>
                     <b>
-                        Data Final:
+                        <u>
+                            Data Final:
+                        </u>
                     </b>
-                </h3> {{ post['dateend'].strftime('%Y-%m-%d') }}        
+                        
+                </h3>     
+                {{ post['dateend'].strftime('%Y-%m-%d') }}
             </p>
-
-            <p class="priority">{{ post['priority'] }}</p>
+            <p>
+                <h3>
+                    <b>
+                        <u>
+                            Prioridade:
+                        </u>
+                    </b>
+                       
+                </h3>     
+                {{ post['priority'] }}
+            </p>
+            
 
             <p class="body">{{ post['body'] }}</p>
 
