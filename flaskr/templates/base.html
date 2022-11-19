@@ -4,17 +4,17 @@
 </title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-<nav>    
+<nav class="navbar navbar-inverse" role="navigation">  
         <h1>
             <a href ="/">
                 To Do List
-            </a>
+            </div></a>
         </h1>
         <ul>
         {% if g.user %}
             <li>
                 <span>
-                    {{ g.user['username'] }}
+                   <font color = "black">Você está logado como:</font>  {{ g.user['username'] }}
                 </span>
             </li>
             <li>

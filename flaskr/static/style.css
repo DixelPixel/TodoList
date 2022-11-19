@@ -1,6 +1,6 @@
 html {
   font-family: sans-serif;
-  background: #eee;
+  background: #FFEFD6;
   padding: 1rem;
 }
 
@@ -8,23 +8,23 @@ body {
   max-width: 100%;
   max-height: 100%;
   margin: 0 auto;
-  background: #D9DDE0;
+  background: #F2DEBA;
 }
 /*REMOVAR ESSA PARTE H1 H2 H3 RELACIONADO A CORES*/
 
 
 a {
-  color: #377ba8;
+  color: #3A8891;
 }
 
 hr {
   border: none;
-  border-top: 2px solid #1468AF;
+  border-top: 2px solid #0E5E6F;
   
 }
 
 nav {
-  background: lightgray;
+  background: black;
   display: flex;
   align-items: right;
   padding: 0 0.5rem;
@@ -62,7 +62,7 @@ nav ul li a, nav ul li span, header .action {
 }
 
 .content > header {
-  border-bottom: 2px solid lightgray;
+  border-bottom: 2px solid #0E5E6F;
   display: flex;
 
   align-items: flex-end;
@@ -99,6 +99,7 @@ nav ul li a, nav ul li span, header .action {
 .post > header h1 {
   font-size: 2.5em;
   margin-bottom: 0;
+  color: #0E5E6F;
 }
 
 .post .about {

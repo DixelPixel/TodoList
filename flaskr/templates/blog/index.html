@@ -1,16 +1,36 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <div class = "cabeca">
+
+    <style>
+        
+    .center {
+        margin: auto;
+        width: 50%;
+        color: green;
+        padding: 10px;
+      }
+    
+      body {
+        color: rgb(36, 106, 197);
+      }
+
+      .tab1 {
+        tab-size: 3;
+      }
+
+      </style>
+
+    <div class = "header">
         <h1>
             {% block title %}
-                Tarefas
+                Sua lista de tarefas
             {% endblock %}
         </h1>
         
         {% if g.user %}
             <a class="action" href="{{ url_for('blog.create') }}">
-                Nova Tarefa
+                Adicionar nova Tarefa
             </a>
         {% endif %}
     </div>
@@ -21,7 +41,7 @@
         <article class="post">
             <header>
                 <div>
-                    <h1>{{ post['title']}}</h1>
+                   <font color="red"><h1>{{ post['title']}}</h1></font> 
                 </div>
                     
                 {% if g.user['id'] == post['author_id'] %}
@@ -30,6 +50,7 @@
                     </a>
                 {% endif %}
             </header> 
+        <br>
             <p>     
                 <h3>       
                     <b>
@@ -40,6 +61,7 @@
                 </h3>
                 {{ post['created'].strftime('%Y-%m-%d') }}
             </p>
+        <br>
             <p>
                 <h3>
                     <b>
@@ -51,6 +73,7 @@
                 </h3>     
                 {{ post['dateend'].strftime('%Y-%m-%d') }}
             </p>
+            <br>
             <p>
                 <h3>
                     <b>
@@ -62,9 +85,18 @@
                 </h3>     
                 {{ post['priority'] }}
             </p>
+            <br>
+            <p>
+                <h3>
+                    <b>
+                        <u>
+                            Descrição:
+                        </u>
+                    </b>
+                       
+                </h3>     
+                <p class="body">{{ post['body'] }}</p>
             
-
-            <p class="body">{{ post['body'] }}</p>
 
         </article>
         {% if not loop.last %}
